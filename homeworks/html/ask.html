@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <title>AskPupkin</title>
+  </head>
+  <body>
+
+    <!-- Шапка -->
+    <nav class="navbar navbar-default navbar-inverse" name="header"> 
+      <div class="container-fluid row">
+        <!-- Лого -->
+        <div class="navbar-header col-md-3">
+          <a href="#" class="navbar-brand">AskPupkin</a>
+        </div>
+        <!-- Поиск по вопросам --> <!--Как сделать поисковую строку подлиннее? -->
+        <div class="col-md-5">
+           <form class="navbar-form form-group" role="search"> 
+              <input type="text" class="form-control" placeholder="Search">
+              <button type="button" class="btn btn-success">ASK</button>
+          </form>
+        </div>
+        <!-- Для неавторизированного посетителя -->
+        <div class="col-md-4">
+          <a href="#">Log in</a>
+          <a href="#">Register</a>
+        </div>
+      </div>
+    </nav>
+    <br>
+
+    <h1>New question</h1>
+    <br>
+
+    <!-- Основная часть -->
+    <div class="row">
+      <!-- Форма для заполнения -->
+      <div class="col-md-8 navbar-fixed-left">
+        <form>
+          <br><br>
+          <!-- Title -->
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Titile</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" placeholder="Titile">
+            </div>
+          </div>
+          <!-- Question -->
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Question</label>
+            <div class="col-md-10">
+              <textarea class="form-control" rows="10" placeholder="Question"></textarea>
+            </div>
+          </div>
+          <!-- Tags -->
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Tags</label>
+            <div class="col-md-10">
+              <input type="email" class="form-control" placeholder="Tags">
+            </div>
+          </div>
+          <!-- Button -->
+          <div class="form-group row">
+            <div class="col-md-10">
+              <button type="submit" class="btn btn-success">ASK!</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+     <!-- Сопутствующая информация-->
+      <div class="col-md-4 navbar-fixed-left">
+          <h2>Popular tags</h2>
+          <a href="#">Что-то</a>
+           <a href="#">Где-то</a>
+           <a href="#">Единороги</a>
+           <a href="#">Котики</a>
+           <a href="#">Верстка</a>
+           <a href="#">WEB</a>
+           <a href="#">MAil.ru</a>
+
+         <h2>Best members</h2>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Очень мутный тип</a><br>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
