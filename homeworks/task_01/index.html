@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/LikeCounter.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <title>AskPupkin</title>
+  </head>
+  <body>
+
+    <!-- Шапка -->
+    <nav class="navbar  navbar-default navbar-inverse">
+      <div class="container row">
+        <div class="navbar-header col-md-3">
+          <a class="navbar-brand" href="#">AskPupkin</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse col-md-9 row">
+          <div class="collapse navbar-collapse col-md-7 row">
+            <ul class="nav navbar-nav">
+              <li>
+                  <form class="navbar-form form-group" role="search">
+                      <input type="text" class="form-control" id="search-footer" placeholder="Search">
+                      <button type="button" class="btn btn-success">ASK</button>
+                  </form>
+              </li>
+            </ul>
+          </div>
+          <div class="collapse navbar-collapse col-md-5 row" id="nav-right-part">
+            <ul class="nav navbar-nav">
+              <li><a href="html/login.html">Log in</a></li>
+              <li><a href="html/signup.html">Register</a></li>
+            </ul>
+          </div>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+    <br>
+
+    <div class="row" id="switch-conext">
+      <div class="col-md-4 navbar-fixed-left ">
+        <a href="#"><h2>New questions</h2></a>
+      </div>
+      <div class="col-md-4 navbar-fixed-left">
+        <a href="#"><h2>Hot questions</h2></a>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Плитки вопросов -->
+      <div class="info-plate col-md-8 navbar-fixed-left">
+        <div class="panel panel-default">
+          <div class="form-group row">
+            <!-- Левая часть плитки -->
+            <div class="col-md-3 media info-plate">
+                <br>
+                <a class="navbar-fixed-left">
+                  <img class="media-object" src="static/img/man.jpg" width="150" height="150">
+                </a>
+                <div class="group">
+                  <div class="btn-group-vertical">
+                    <likes>5</likes>
+                  </div>
+                  <!-- Like / Dislike-->
+                  <div class="btn-group-vertical">
+                    <button type="button" class="btn btn-default">
+                      <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span> 
+                    </button>
+                    <button type="button" class="btn btn-default">
+                      <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> 
+                    </button>
+                  </div>
+                </div>
+            </div>
+            <!-- Текст вопроса -->
+            <div class="col-md-9">
+              <h2>How to built moon park</h2>
+              <blockquote>
+                <p>???????????????????????????????
+                  ????????????????????????????
+                  ??????????????????????</p>
+                <p>??????????????????????</p>
+              </blockquote>
+              <div class="row">
+                <div class="col-md-2">
+                  <a href="#">answers(?)</a>
+                </div>
+                <div class="col-md-10">
+                  <text>Tags:<text>
+                  <a href="#">Где-то</a>
+                  <a href="#">Единороги</a>
+                  <a href="#">Котики</a>
+                  <a href="#">Верстка</a>
+                  <a href="#">WEB</a>
+                </div>
+            </div>
+            </div>
+          </div>  
+        </div>
+      </div>
+      <!-- Сопутствующая информация-->
+      <div class="col-md-4 navbar-fixed-left">
+          <h2>Popular tags</h2>
+          <a href="#">Что-то</a>
+           <a href="#">Где-то</a>
+           <a href="#">Единороги</a>
+           <a href="#">Котики</a>
+           <a href="#">Верстка</a>
+           <a href="#">WEB</a>
+           <a href="#">MAil.ru</a>
+
+         <h2>Best members</h2>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Очень мутный тип</a><br>
+      </div>
+    </div>
+
+
+    <!-- Навигация по страницам --> 
+    <nav aria-label="Page navigation" name="footer">
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">...</a></li>
+        <li><a href="#">55</a></li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+<!--<script src="node_modules/jquery/dist/jquery.slim.min.js"></script>-->
+    <!--<script src="node_modules/popper.js/dist/popper.min.js"></script>-->
+    <!--<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>-->

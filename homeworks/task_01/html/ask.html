@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/login.css" rel="stylesheet">
+      <link href="../css/navbar.css" rel="stylesheet">
+
+    <title>AskPupkin</title>
+  </head>
+  <body>
+
+    <!-- Шапка -->
+    <nav class="navbar  navbar-default navbar-inverse">
+      <div class="container row">
+        <div class="navbar-header col-md-3">
+          <a class="navbar-brand" href="../index.html">AskPupkin</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse col-md-9 row">
+          <div class="collapse navbar-collapse col-md-7 row">
+            <ul class="nav navbar-nav">
+              <li>
+                  <form class="navbar-form form-group" role="search">
+                      <input type="text" class="form-control" id="search-footer" placeholder="Search">
+                      <button type="button" class="btn btn-success">ASK</button>
+                  </form>
+              </li>
+            </ul>
+          </div>
+          <div class="collapse navbar-collapse col-md-5 row" id="nav-right-part">
+            <ul class="nav navbar-nav">
+              <li><a href="login.html">Log in</a></li>
+              <li><a href="signup.html">Register</a></li>
+            </ul>
+          </div>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+    <br>
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+            <h1>New question</h1>
+        </div>
+    </div>
+    <br>
+
+    <!-- Основная часть -->
+    <div class="row">
+      <!-- Форма для заполнения -->
+      <div class="col-md-8 navbar-fixed-left">
+          <div class="main-content">
+            <form>
+              <br><br>
+              <!-- Title -->
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Titile</label>
+                <div class="col-md-10">
+                  <input type="text" class="form-control" placeholder="Titile">
+                </div>
+              </div>
+              <!-- Question -->
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Question</label>
+                <div class="col-md-10">
+                  <textarea class="form-control" rows="10" placeholder="Question"></textarea>
+                </div>
+              </div>
+              <!-- Tags -->
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Tags</label>
+                <div class="col-md-10">
+                  <input type="email" class="form-control" placeholder="Tags">
+                </div>
+              </div>
+              <!-- Button -->
+              <div class="form-group row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-10">
+                    <button type="submit" class="btn btn-success">ASK!</button>
+                  </div>
+              </div>
+            </form>
+          </div>
+      </div>
+
+     <!-- Сопутствующая информация-->
+      <div class="col-md-4 navbar-fixed-left">
+          <h2>Popular tags</h2>
+          <a href="#">Что-то</a>
+           <a href="#">Где-то</a>
+           <a href="#">Единороги</a>
+           <a href="#">Котики</a>
+           <a href="#">Верстка</a>
+           <a href="#">WEB</a>
+           <a href="#">MAil.ru</a>
+
+         <h2>Best members</h2>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Очень мутный тип</a><br>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
