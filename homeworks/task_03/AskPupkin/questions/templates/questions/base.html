@@ -1,0 +1,88 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="{% static "questions/css/bootstrap.min.css" %}" rel="stylesheet" />
+    <link href="{% static "questions/css/navbar.css" %}" rel="stylesheet" />
+      {% block add_spec_css %}
+      {% endblock %}
+    <title>AskPupkin</title>
+  </head>
+  <body>
+
+  <!-- Шапка -->
+    <nav class="navbar  navbar-default navbar-inverse">
+      <div class="container row">
+        <div class="navbar-header col-md-3">
+          <a class="navbar-brand" href="{% url 'questions:index' %}">AskPupkin</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse col-md-9 row">
+          <div class="collapse navbar-collapse col-md-7 row">
+            <ul class="nav navbar-nav">
+              <li>
+                  <form class="navbar-form form-group" role="search">
+                      <input type="text" class="form-control" id="search-footer" placeholder="Search">
+                      <button type="button" class="btn btn-success">Search</button>
+                  </form>
+              </li>
+                <li>
+                    <form class="navbar-form form-group" role="search">
+                        <button type="button" class="btn btn-success">
+                            <a href="{% url 'questions:ask' %}">Ask?</a>
+                        </button>
+                    </form>
+              </li>
+            </ul>
+          </div>
+          <div class="collapse navbar-collapse col-md-5 row" id="nav-right-part">
+            <ul class="nav navbar-nav">
+              <li><a href="{% url 'questions:login' %}">Log in</a></li>
+              <li><a href="{% url 'questions:signup' %}">Register</a></li>
+            </ul>
+          </div>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+    <br>
+
+  <div class="row">
+      <!--Тело тут-->
+      <!--<div class="info-plate col-md-8 navbar-fixed-left">-->
+          <!--Вставляется внутренний контент-->
+          {% block content %}{% endblock %}
+      <!--</div>-->
+      <!-- Сопутствующая информация-->
+      <div class="col-md-4 navbar-fixed-left">
+          <h2>Popular tags</h2>
+          <a href="#">Что-то</a>
+           <a href="#">Где-то</a>
+           <a href="#">Единороги</a>
+           <a href="#">Котики</a>
+           <a href="#">Верстка</a>
+           <a href="#">WEB</a>
+           <a href="#">MAil.ru</a>
+
+         <h2>Best members</h2>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Мутный тип</a><br>
+         <a href="#">Очень мутный тип</a><br>
+      </div>
+    </div>
+
+  {% block pagination %}{% endblock %}
+
+      <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="{% static "questions/js/jquery.slim.min.js" %}"></script>
+    <script src="{% static "questions/js/popper.min.js" %}"></script>
+    <script src="{% static "questions/js/bootstrap.min.js" %}"></script>
+  </body>
+</html>

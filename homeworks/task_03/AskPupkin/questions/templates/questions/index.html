@@ -1,0 +1,107 @@
+{% extends "questions/base.html" %}
+{% load static %}
+{% block add_spec_css %}
+  <link href="{% static "questions/css/index.css" %}" rel="stylesheet" />
+  <link href="{% static "questions/css/LikeCounter.css" %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+
+        <div class="row" id="switch-conext">
+            <div class="col-md-4 navbar-fixed-left ">
+              <a href="{% url 'questions:index' %}"><h2>New questions</h2></a>
+            </div>
+            <div class="col-md-4 navbar-fixed-left">
+              <a href="{% url 'questions:hot' %}"><h2>Hot questions</h2></a>
+            </div>
+          </div>
+
+        <div class="info-plate col-md-8 navbar-fixed-left">
+          {% for like in questions %}
+                <div class="panel panel-default question-plate">
+                  <div class="form-group row">
+                    <!-- Левая часть плитки -->
+                    <div class="col-md-3 media info-plate">
+                        <br>
+                        <a class="navbar-fixed-left">
+                          <img class="media-object" src="{% static "questions/img/man.jpg" %}" width="150" height="150">
+                        </a>
+                        <div class="group">
+                          <div class="btn-group-vertical">
+                            <likes>{{like}}</likes>
+                          </div>
+                          <!-- Like / Dislike-->
+                          <div class="btn-group-vertical">
+                            <button type="button" class="btn btn-default">
+                              <img src="{% static "questions/img/caret-top-2x.png" %}">
+                            </button>
+                            <button type="button" class="btn btn-default">
+                              <img src="{% static "questions/img/caret-bottom-2x.png" %}">
+                            </button>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- Текст вопроса -->
+                    <div class="col-md-9">
+                      <h2>How to built moon park</h2>
+                      <blockquote>
+                        <p>???????????????????????????????
+                          ????????????????????????????
+                          ??????????????????????</p>
+                        <p>??????????????????????</p>
+                      </blockquote>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <a href="#">answers(?)</a>
+                        </div>
+                        <div class="col-md-10">
+                          <text>Tags:<text>
+                          <a href="#">Где-то</a>
+                          <a href="#">Единороги</a>
+                          <a href="#">Котики</a>
+                          <a href="#">Верстка</a>
+                          <a href="#">WEB</a>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
+        </div>
+
+{% endblock %}
+
+
+{% block pagination %}
+<nav aria-label="Page navigation" name="footer">
+      <ul class="pagination">
+          {% if questions.has_previous %}
+              {% if questions.has_previous %}
+                    <li>
+                      <a href="{% url 'questions:index' questions.previous_page_number %}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+              {% endif %}
+              <li><a href="{% url 'questions:index' 1 %}">1</a></li>
+              <li><a href="#">...</a></li>
+          {% endif %}
+          <li><a href="#">{{ questions.number }}</a></li>
+          {% if questions.has_next %}
+              <li><a href="#">...</a></li>
+              {% if questions.paginator.num_pages > 1 %}
+                    <li>
+                      <a href="{% url 'questions:index' questions.paginator.num_pages %}">{{questions.paginator.num_pages}}</a>
+                    </li>
+              {% endif %}
+              {% if questions.has_next %}
+                    <li>
+                      <a href="{% url 'questions:index' questions.next_page_number %}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+              {% endif %}
+          {% endif %}
+      </ul>
+    </nav>
+{% endblock %}
