@@ -1,65 +1,108 @@
+from datetime import datetime
+from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.contrib.auth.models import User
-
+from django.core.paginator import Paginator
 # Create your models here.
 
+
+def get_paginator(questions_list, count):
+    return Paginator(questions_list, count)
+
+
+class QuestionsManager(models.Manager):
+
+    count = 3
+
+    def get_new_questions(self, page_number):
+        questions_list = Question.objects.order_by('-question_creation')
+        paginator = get_paginator(questions_list, self.count)
+        result = paginator.get_page(page_number)
+        return result
+
+    def get_hot_questions(self, page_number):
+        questions_list = Question.objects.order_by('-question_like__count')
+        paginator = get_paginator(questions_list, self.count)
+        result = paginator.get_page(page_number)
+        return result
+
+    def get_questions_with_tag(self, name_of_tag, page_number):
+        tag = Tag.objects.get(tag_name = name_of_tag)
+        questions_list = tag.question_id.all()
+        paginator = get_paginator(questions_list, self.count)
+        result = paginator.get_page(page_number)
+        return result
+
+
+class User(AbstractUser):
+    upload = models.ImageField(default=None)
+
+    def __str__(self):
+        return str(self.username)
+
 class Question(models.Model):
-    question_id = models.IntegerField(primary_key=True, db_index=True)
-    asker_id = models.ForeignKey( # Many to one
-        'ExtraUser',
-        on_delete=models.CASCADE
-    )
-    questions_title = models.CharField(max_length=30)
-    questions_text = models.CharField(max_length=300)
-    date_of_creation = models.DateTimeField()
+    question_id = models.IntegerField(
+        primary_key=True,
+        db_index=True)
+    asker_id = models.ForeignKey(User,
+                                 on_delete=models.CASCADE,
+                                 related_name="questiom_authtor")
+    title = models.CharField(max_length=30)
+    text = models.TextField(max_length=300)
+    is_active = models.BooleanField(default=True)
+    have_right_answer = models.BooleanField(default=False)
+    question_creation = models.DateTimeField(default=datetime.now())
+
+    objects = QuestionsManager()
+
+    def __str__(self):
+        return str(self.question_id)
+
+
 
 class Answer(models.Model):
     answer_id = models.IntegerField(
         primary_key=True,
-        db_index=True
-    )
-    question_id = models.ForeignKey( # Many to one
-        Question,
-        on_delete=models.CASCADE #удаление null связей
-    ) #По умолчанию связывание primary_key
-    teller_id = models.OneToOneField(
-        'ExtraUser',
-        on_delete = models.CASCADE
-    )
-    answers_title = models.CharField(max_length=30)
-    answers_text = models.CharField(max_length=300)
-    date_of_creation = models.DateTimeField()
+        db_index=True)
+    authtor_id = models.ForeignKey(User,
+                                   on_delete=models.CASCADE,
+                                   related_name="answer_authtor")
+    question_id = models.ForeignKey(Question,
+                                    on_delete=models.CASCADE,
+                                    related_name="answers")
+    text = models.TextField(max_length=300)
+    is_correct = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    answer_creation = models.DateTimeField(default=datetime.now())
 
-# class Like(models.Model): Нужно ли отнаследовать лайки вопросов и лайки ответов от общей абстракции лайк?
-#     question_id = models.IntegerField(primary_key=True)
-#     count = models.IntegerField()
+    def __str__(self):
+        return str(self.question_id)
+
 
 class Tag(models.Model):
-    pass;
+    tag_name = models.CharField(max_length=10,
+                                unique=True,
+                                verbose_name='tag_name')
+    question_id = models.ManyToManyField(Question,
+                                         related_name='Tags')
 
-class ExtraUser(User):
-    user_id = models.IntegerField(
-        primary_key=True,
-        db_index=True
-    )
+    def __str__(self):
+        return str(self.tag_name)
 
-class Profil():
-    user_id = models.OneToOneField(
-        ExtraUser,
-        on_delete=models.CASCADE
-    )
-    avatar = models.ImageField()
+class Like(models.Model):
+    count = models.IntegerField(default=0)
 
-class Smth(models.Model):
-    id = models.IntegerField(
-        primary_key=True,
-        db_index=True
-    )
-    string = models.CharField(max_length=30)
+class LikeForQuestion(Like):
+    question_id = models.OneToOneField(Question,
+                                    on_delete=models.CASCADE,
+                                    related_name="question_like")
 
+    def __str__(self):
+        return 'question_id ' + str(self.question_id)
 
-# class UsersProfil(models.Model): #его надо отнаследовать !
-#     user_id = models.IntegerField(primary_key=True, unique=True, db_index=True)
-#     nikename = models.CharField(max_length=30)
-#     #mail_address
-#     raitind = models.IntegerField()
+class LikeForAnswer(Like):
+    answer_id = models.OneToOneField(Answer,
+                                  on_delete=models.CASCADE,
+                                  related_name="answer_like")
+
+    def __str__(self):
+        return 'question_id ' + str(self.answer_id)

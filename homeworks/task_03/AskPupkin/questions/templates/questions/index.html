@@ -17,7 +17,7 @@
           </div>
 
         <div class="info-plate col-md-8 navbar-fixed-left">
-          {% for like in questions %}
+          {% for question in questions_on_page %}
                 <div class="panel panel-default question-plate">
                   <div class="form-group row">
                     <!-- Левая часть плитки -->
@@ -26,9 +26,10 @@
                         <a class="navbar-fixed-left">
                           <img class="media-object" src="{% static "questions/img/man.jpg" %}" width="150" height="150">
                         </a>
+                        <a>{{ question.asker_id }}<a>
                         <div class="group">
                           <div class="btn-group-vertical">
-                            <likes>{{like}}</likes>
+                            <likes>{{ question.question_like.count }}</likes>
                           </div>
                           <!-- Like / Dislike-->
                           <div class="btn-group-vertical">
@@ -43,24 +44,19 @@
                     </div>
                     <!-- Текст вопроса -->
                     <div class="col-md-9">
-                      <h2>How to built moon park</h2>
+                      <a href="{% url 'questions:question' question.question_id %}" style="font-size: 30px">{{ question.title }}</a>
                       <blockquote>
-                        <p>???????????????????????????????
-                          ????????????????????????????
-                          ??????????????????????</p>
-                        <p>??????????????????????</p>
+                        <p>{{ question.text }}</p>
                       </blockquote>
                       <div class="row">
                         <div class="col-md-2">
-                          <a href="#">answers(?)</a>
+                          <p>answers({{ question.answers.count }})</p>
                         </div>
                         <div class="col-md-10">
                           <text>Tags:<text>
-                          <a href="#">Где-то</a>
-                          <a href="#">Единороги</a>
-                          <a href="#">Котики</a>
-                          <a href="#">Верстка</a>
-                          <a href="#">WEB</a>
+                            {% for tag in question.Tags.all %}
+                                 <a href="{% url 'questions:tag' tag.tag_name %}" style="background-color: #e0e0df">{{ tag.tag_name }}</a>
+                            {% endfor %}
                         </div>
                     </div>
                     </div>
@@ -73,35 +69,5 @@
 
 
 {% block pagination %}
-<nav aria-label="Page navigation" name="footer">
-      <ul class="pagination">
-          {% if questions.has_previous %}
-              {% if questions.has_previous %}
-                    <li>
-                      <a href="{% url 'questions:index' questions.previous_page_number %}" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                      </a>
-                    </li>
-              {% endif %}
-              <li><a href="{% url 'questions:index' 1 %}">1</a></li>
-              <li><a href="#">...</a></li>
-          {% endif %}
-          <li><a href="#">{{ questions.number }}</a></li>
-          {% if questions.has_next %}
-              <li><a href="#">...</a></li>
-              {% if questions.paginator.num_pages > 1 %}
-                    <li>
-                      <a href="{% url 'questions:index' questions.paginator.num_pages %}">{{questions.paginator.num_pages}}</a>
-                    </li>
-              {% endif %}
-              {% if questions.has_next %}
-                    <li>
-                      <a href="{% url 'questions:index' questions.next_page_number %}" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                      </a>
-                    </li>
-              {% endif %}
-          {% endif %}
-      </ul>
-    </nav>
+    {% include "questions/pagination.html" %}
 {% endblock %}

@@ -1,0 +1,47 @@
+<nav aria-label="Page navigation" name="footer">
+      <ul class="pagination">
+          {% if questions_on_page.has_previous %}
+              {% if questions_on_page.has_previous %}
+                    <li>
+                        {% if arg %}
+                            <a href="{% url proxy_to arg questions_on_page.previous_page_number %}" aria-label="Previous">
+                        {% else %}
+                            <a href="{% url proxy_to questions_on_page.previous_page_number %}" aria-label="Previous">
+                          {% endif %}
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+              {% endif %}
+                {% if arg %}
+                    <li><a href="{% url proxy_to arg 1 %}">1</a></li>
+                {% else %}
+                    <li><a href="{% url proxy_to 1 %}">1</a></li>
+                {% endif %}
+              <li><a href="#">...</a></li>
+          {% endif %}
+          <li><a href="#">{{ questions_on_page.number }}</a></li>
+          {% if questions_on_page.has_next %}
+              <li><a href="#">...</a></li>
+              {% if questions_on_page.paginator.num_pages > 1 %}
+                    <li>
+                        {% if arg %}
+                             <a href="{% url proxy_to arg questions_on_page.paginator.num_pages %}">{{questions_on_page.paginator.num_pages}}</a>
+                        {% else %}
+                            <a href="{% url proxy_to questions_on_page.paginator.num_pages %}">{{questions_on_page.paginator.num_pages}}</a>
+                        {% endif %}
+                    </li>
+              {% endif %}
+              {% if questions_on_page.has_next %}
+                    <li>
+                        {% if arg %}
+                                <a href="{% url proxy_to arg questions_on_page.next_page_number %}" aria-label="Next">
+                        {% else %}
+                                <a href="{% url proxy_to questions_on_page.next_page_number %}" aria-label="Next">
+                        {% endif %}
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+              {% endif %}
+          {% endif %}
+      </ul>
+    </nav>
